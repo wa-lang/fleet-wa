@@ -228,13 +228,13 @@
 						</dict>
 					</dict>
 					<key>match</key>
-					<string>^(#) =(\s*.*?)\s*=\s*$\n?</string>
+					<string>^(//) =(\s*.*?)\s*=\s*$\n?</string>
 					<key>name</key>
 					<string>comment.line.double-slash.banner.wa</string>
 				</dict>
 				<dict>
 					<key>begin</key>
-					<string>(^[ \t]+)?(?=#)</string>
+					<string>(^[ \t]+)?(?=//)</string>
 					<key>beginCaptures</key>
 					<dict>
 						<key>1</key>
@@ -249,7 +249,7 @@
 					<array>
 						<dict>
 							<key>begin</key>
-							<string>#</string>
+							<string>//</string>
 							<key>beginCaptures</key>
 							<dict>
 								<key>0</key>
@@ -285,7 +285,7 @@
 			<key>name</key>
 			<string>variable.other.exported.wa</string>
 		</dict>
-		<key>fn_parens</key>
+		<key>func_parens</key>
 		<dict>
 			<key>begin</key>
 			<string>\(</string>
@@ -388,7 +388,7 @@
 				</dict>
 				<dict>
 					<key>include</key>
-					<string>#fn_parens</string>
+					<string>#func_parens</string>
 				</dict>
 			</array>
 		</dict>
@@ -468,7 +468,7 @@
 					<key>comment</key>
 					<string>This matches the 'var x' style of variable declaration.</string>
 					<key>match</key>
-					<string>^\s*(var)\s+((?:[[:alpha:]_]\w*)(?:,\s+[[:alpha:]_]\w*)*)\s*(.*?)\s*(?:=|$)</string>
+					<string>^\s*(global|var)\s+((?:[[:alpha:]_]\w*)(?:,\s+[[:alpha:]_]\w*)*)\s*(.*?)\s*(?:=|$)</string>
 					<key>name</key>
 					<string>meta.initialization.explicit.wa</string>
 				</dict>
@@ -524,7 +524,7 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>\b(switch|c(ontinue|ase)|type|i(nterface|f|mport)|def(er|ault)|package|else|var|f(or|n)|r(eturn|ange)|break)\b</string>
+					<string>\b(switch|c(ontinue|ase)|type|i(nterface|f|mport)|def(er|ault)|package|else|var|f(or|unc)|r(eturn|ange)|break)\b</string>
 					<key>name</key>
 					<string>keyword.control.wa</string>
 				</dict>
@@ -564,7 +564,7 @@
 		<dict>
 			<key>begin</key>
 			<string>(?x)
-			        (^\s*(fn)\s*
+			        (^\s*(func)\s*
 			         ([[:alpha:]_]\w*)?                                            # name of function is optional
 			         \( ((?:[\[\]\w\d\s\/,._*&amp;&lt;&gt;-]|(?:interface\{\}))*)? \)        # required braces for parameters (even if empty)
 			         \s*
@@ -691,7 +691,7 @@
 			<key>begin</key>
 			<string>(?x)
 			        (
-			         (fn)\s*
+			         (func)\s*
 			         (
 			         \( ((?:[\[\]\w\d\s,._*&amp;&lt;&gt;-]|(?:interface\{\}))*) \)\s+        # receiver variable declarations, in brackets
 			         ([[:alpha:]_]\w*)?                                            # name of function is optional
